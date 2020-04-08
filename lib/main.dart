@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdesigns/pages/basic_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,16 +9,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Material App Bar'),
-          ),
-        ),
-      ),
+      initialRoute: 'basic',
+      routes: {
+        'basic' : (BuildContext context) => BasicPage(),
+      },
     );
   }
 }
