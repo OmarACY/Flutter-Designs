@@ -9,43 +9,55 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          _createImage(),
-          _createTitle(),
-          _createActions(),
-          _createText()
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+            children: <Widget>[
+              _createImage(),
+              _createTitle(),
+              _createActions(),
+              _createText(),
+              _createText(),
+              _createText(),
+              _createText(),
+            ]
+        ),
       )
     );
   }
 
   Widget _createImage(){
-    return Image(
-        image: NetworkImage('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500')
+    return Container(
+      width: double.infinity,
+      child: Image(
+          image: NetworkImage('https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+          fit: BoxFit.cover,
+        height: 200.0,
+      ),
     );
   }
 
   Widget _createTitle(){
-    return Container(
-      padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 20.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Lago con un puente', style: styleTitle),
-                SizedBox(height: 7.0),
-                Text('Un lago en Alemania', style: styleSubTitle)
-              ],
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric( horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Lago con un puente', style: styleTitle),
+                  SizedBox(height: 7.0),
+                  Text('Un lago en Alemania', style: styleSubTitle)
+                ],
+              ),
             ),
-          ),
 
-          Icon(Icons.star, color: Colors.red, size: 30.0,),
-          Text('41', style: TextStyle( fontSize: 20.0))
+            Icon(Icons.star, color: Colors.red, size: 30.0,),
+            Text('41', style: TextStyle( fontSize: 20.0))
 
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -72,11 +84,13 @@ class BasicPage extends StatelessWidget {
   }
 
   Widget _createText() {
-    return Container(
-      padding: EdgeInsets.symmetric( horizontal: 40.0, vertical: 20.0),
-      child: Text(
-          lipsum.createParagraph(),
-          textAlign: TextAlign.justify,
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric( horizontal: 30.0),
+        child: Text(
+            lipsum.createParagraph(),
+            textAlign: TextAlign.justify,
+        ),
       ),
     );
   }
