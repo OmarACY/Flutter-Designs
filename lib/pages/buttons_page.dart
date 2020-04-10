@@ -12,12 +12,14 @@ class ButtonsPage extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                _titles()
+                _titles(),
+                _roundedButtons()
               ],
             ),
           )
         ],
       ),
+      bottomNavigationBar: _bottomNavigationBar(context),
     );
   }
 
@@ -80,4 +82,88 @@ class ButtonsPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget _bottomNavigationBar(BuildContext context){
+    return Theme(
+        data: Theme.of(context).copyWith(
+            canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+            primaryColor: Colors.pinkAccent,
+            textTheme: Theme.of(context).textTheme.copyWith(
+              caption: TextStyle( color: Color.fromRGBO(116, 117, 152, 1.0))
+            )
+        ),
+        child: BottomNavigationBar(
+          fixedColor: Colors.pink,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon( Icons.calendar_today),
+                title: Container()
+            ),
+            BottomNavigationBarItem(
+                icon: Icon( Icons.bubble_chart),
+                title: Container()
+            ),
+            BottomNavigationBarItem(
+                icon: Icon( Icons.supervised_user_circle),
+                title: Container()
+            )
+          ],
+        )
+    );
+  }
+
+  Widget _roundedButtons() {
+    return Table(
+      children: [
+        TableRow(
+          children: [
+            _createRoundedButton(),
+            _createRoundedButton(),
+          ]
+        ),
+        TableRow(
+          children: [
+            _createRoundedButton(),
+            _createRoundedButton(),
+          ]
+        ),
+        TableRow(
+          children: [
+            _createRoundedButton(),
+            _createRoundedButton(),
+          ]
+        ),
+        TableRow(
+          children: [
+            _createRoundedButton(),
+            _createRoundedButton(),
+          ]
+        ),
+      ],
+    );
+  }
+
+  Widget _createRoundedButton() {
+    return Container(
+      height: 180.0,
+      margin: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(62, 66, 107, 0.7),
+        borderRadius: BorderRadius.circular(20.0)
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          SizedBox( height: 5.0),
+          CircleAvatar(
+            backgroundColor: Colors.pinkAccent,
+            radius: 35.0,
+            child: Icon(Icons.swap_calls, color: Colors.white, size: 30.0),
+          ),
+          Text('Cosa', style: TextStyle( color: Colors.pinkAccent)),
+        ],
+      ),
+    );
+  }
+
 }
