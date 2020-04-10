@@ -1,4 +1,4 @@
-# flutterdesigns
+# Flutter designs
 
 A new Flutter application for designs.
 
